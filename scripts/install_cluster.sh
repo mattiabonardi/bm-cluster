@@ -11,7 +11,7 @@ rm .env
 echo Insert Postgres password:
 read postgres_password
 
-echo export BM_WIKI_DB_PASS="${postgres_password}" > .env
+echo BM_WIKI_DB_PASS="${postgres_password}" > .env
 
 # create volumes
 if [ ! -d "../volumes/bm-wiki" ]; then

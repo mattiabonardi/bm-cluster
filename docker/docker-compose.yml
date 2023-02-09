@@ -1,0 +1,56 @@
+version: "3"
+services:
+
+  # nginx
+  nginx: 
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ../volumes/nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+      - 443:443
+
+  # BM Portfolio
+  bm-portfolio: 
+    image: bm-portfolio:latest
+    container_name: bm-portfolio
+    ports:
+      - 8080:8080
+
+  # BM Wiki (database)
+  bm-wiki-db:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_DB: bm-wiki
+      POSTGRES_PASSWORD: ${BM_WIKI_DB_PASS}
+      POSTGRES_USER: wikijs
+    restart: unless-stopped
+    volumes:
+      - ../volumes/bm-wiki/db-data:/var/lib/postgresql/data
+
+  # BM Wiki
+  bm-wiki:
+    image: ghcr.io/requarks/wiki:2
+    depends_on:
+      - bm-wiki-db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: bm-wiki-db
+      DB_PORT: 5432
+      DB_USER: wikijs
+      DB_PASS: ${BM_WIKI_DB_PASS}
+      DB_NAME: bm-wiki
+    restart: unless-stopped
+    ports:
+      - "8081:3000"
+
+  # Tic Tac Toe 3D
+  tictactoe: 
+    image: tictactoe-ddd:latest
+    container_name: tictactoe
+    ports:
+      - 8082:8080
+
+volumes:
+  db-data:

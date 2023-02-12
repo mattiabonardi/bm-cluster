@@ -7,7 +7,7 @@ services:
     container_name: nginx
     network_mode: host
     volumes:
-      - ../volumes/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ../volumes/nginx/:/etc/nginx/
     depends_on:
       - bm-portfolio
       - bm-wiki

@@ -4,7 +4,7 @@
 # The script allows to clone bm-application repositories
 
 # MAIN
-REPOSITORIES=( "mattiabonardi/bm-portfolio" "mattiabonardi/tictactoe-ddd" )
+REPOSITORIES=( "mattiabonardi/bm-portfolio" "mattiabonardi/tictactoe" )
 
 # create repository directory if not exists
 DIR="../repositories"

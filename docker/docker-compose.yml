@@ -51,7 +51,7 @@ services:
 
   # Tic Tac Toe 3D
   tictactoe: 
-    image: tictactoe-ddd:latest
+    image: tictactoe:latest
     container_name: tictactoe
     ports:
       - 8082:8080

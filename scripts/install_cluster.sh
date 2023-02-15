@@ -5,6 +5,15 @@
 
 # MAIN
 
+# clean repositories dir
+rm -R ../repositories
+
+# clone repositories
+bash clone_repositories.sh
+
+# build images
+bash build_images.sh
+
 # iterate repositories directory
 cd ../docker
 rm .env
@@ -20,4 +29,4 @@ if [ ! -d "../volumes/bm-wiki" ]; then
   mkdir ../volumes/bm-wiki/db-data
 fi
 
-docker-compose up -d
+docker compose up -d

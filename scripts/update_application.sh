@@ -24,4 +24,4 @@ bash build.sh
 
 # restart docker service
 cd ../../docker
-docker-compose up -d --no-deps $APP
+docker compose up -d --no-deps $APP

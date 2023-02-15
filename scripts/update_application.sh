@@ -25,3 +25,4 @@ bash build.sh
 # restart docker service
 cd ../../docker
 docker compose up -d $APP
+docker image prune
